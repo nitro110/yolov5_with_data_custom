@@ -1,0 +1,29 @@
+1 Cài đặt modul
+# pip install -r requierment.txt
+
+2 Tạo file my_data.yaml trong thư mục  data
+với nội dung
+-----------------------------
+train: train_images/images/train
+val: train_images/images/val
+
+is_coco: False
+nc: 1
+names: ['cot']
+------------------------------
+
+
+3 Chạy lệnh để train data
+# python train.py --img 640 --batch 16 --epochs 3 --data my_data.yaml --weight yolov5m.pt
+
+
+4 Chạy lệnh detect
+
+4.1 Đối với ảnh
+# python detect.py --source data/images --weight runs/train/exp/weights/best.pt --conf 0.25
+# python detect.py --source data/images --weight runs/train/exp/weights/last.pt --conf 0.25
+
+# python detect.py --source data/images --weight best.pt --conf 0.25
+
+4.2 Đối với camera
+# python dectec.py --source 0 --weight runs/train/exp/weights/best.pt --conf 0.25
